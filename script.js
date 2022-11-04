@@ -9,7 +9,7 @@ fucntion currentWeatherConditions(city) {
 
     $.ajax({
         url: apiURL,
-        method: "GET"
+        method: "GET",
     }).then(function(weatherOfSearchedCity)) {
 
     }
