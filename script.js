@@ -1,5 +1,6 @@
-var apiUrl = "https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}"
 var apiKey = "1edc84713465d4aba9696522d1dc5fc4";
+var apiUrl = "https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}"
+// var apiKey = "1edc84713465d4aba9696522d1dc5fc4";
 // var currentDay = moment().format('ll');
 var searchHistory = [];
 
@@ -85,8 +86,12 @@ function fiveDayForecast(lat, lon) {
     }); 
 }
 
-$("#citySearchButton").on("click", function(event) {
-    event.preventDefault();
+var citySearchButtonEl = document.querySelector("#citySearchButton");
+
+    citySearchButtonEl.addEventListener('click', function() {
+        console.log('Hello World');
+// citySearchButtonEl.addEventListener("click", function() {
+    // event.preventDefault();
     console.log('Hello World');
     var city = $("#city-input-id").val().trim();
     searchedCity(city);
@@ -94,7 +99,7 @@ $("#citySearchButton").on("click", function(event) {
     if (!searchHistory.includes(city)) {
         searchHistory.push(city);
         var searchedCity = $(`
-            <li class="city-search-history">${city}</li>
+            <li id="city-search-history">${city}</li>
             `);
         $("#searchHistory").append(searchedCity);
     }
@@ -103,7 +108,10 @@ $("#citySearchButton").on("click", function(event) {
     console.log(searchHistory);
 });
 
-$(document).on("click", ".city-search-history", function() {
+
+var citySearchHistoryEl = document.getElementById("#city-search-history");
+
+citySearchHistoryEl.addEventListener("click", function() {
     var listCity = $(this).text();
     searchedCity(listCity);
 });
