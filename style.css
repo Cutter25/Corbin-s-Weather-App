@@ -35,7 +35,7 @@ body {
     border-radius: 10px;
 }
 
-.citySearchButton {
+#citySearchButton {
     background-color: limegreen;
     display: block;
     height: 30px;
