@@ -50,7 +50,7 @@ function fiveDayForecast(lat, lon) {
         console.log(futureResponse);
         $("#fiveDay").empty();
 
-        for (let i = 9; i < 40; i+= 8) {
+        for (let i = 7; i < 42; i+= 7) {
             var fiveDayInfo = {
                 date: futureResponse.list[i].dt,
                 icon: futureResponse.list[i].weather[0].icon,
@@ -62,7 +62,7 @@ function fiveDayForecast(lat, lon) {
             var iconURL = `<img src="https://openweathermap.org/img/w/${fiveDayInfo.icon}.png" alt="${futureResponse.list[i].weather[0].icon}" />`;
 
             var fiveDayForecastCard = $(`
-                        <div class="card-body">
+                        <div class="five-day-card">
                             <h5>${currDate}</h5>
                             <p>${iconURL}</p>
                             <p>Temp: ${fiveDayInfo.temp} °F</p>
@@ -91,7 +91,7 @@ function fiveDayForecast(lat, lon) {
         var currCity = $(`
             <li id="city-search-history">${city}</li>
             `);
-        $("#searchHistory").append(currCity);
+        $("#list-of-cities").append(currCity);
     }
 
     localStorage.setItem("city", JSON.stringify(searchHistory));
@@ -99,7 +99,7 @@ function fiveDayForecast(lat, lon) {
 });
 
 
-    var citySearchHistoryEl = document.querySelector("#city-search-history");
+    var citySearchHistoryEl = document.getElementById("#city-search-history");
 
     citySearchHistoryEl.addEventListener("click", function(event) {
     event.preventDefault();
