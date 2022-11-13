@@ -89,7 +89,7 @@ function fiveDayForecast(lat, lon) {
     if (!searchHistory.includes(city)) {
         searchHistory.push(city);
         var currCity = $(`
-            <li id="city-search-history">${city}</li>
+            <li class="city-search-history">${city}</li>
             `);
         $("#list-of-cities").append(currCity);
     }
@@ -99,11 +99,7 @@ function fiveDayForecast(lat, lon) {
 });
 
 
-    var citySearchHistoryEl = document.getElementById("#city-search-history");
-
-    citySearchHistoryEl.addEventListener("click", function(event) {
-    event.preventDefault();
-
+$(document).on("click", ".city-search-history", function() {
     var listCity = $(this).text();
     searchedCity(listCity);
 });
